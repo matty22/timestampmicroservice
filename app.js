@@ -10,9 +10,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-app.get('/', function(request, response) {
-  response.send('id: ' + request);
-});
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -25,6 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
+app.get('/', function(request, response) {
+  response.send('id: ' + request);
+});
 
 
 // catch 404 and forward to error handler
