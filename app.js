@@ -24,8 +24,7 @@ app.use('/', index);
 app.use('/users', users);
 
 app.get('/:date', function(request, response) {
-  var dateString = request.param('date');
-  console.log(dateString);
+  var dateString = Date.parse(request.param('date')).getTime() / 1000;
   response.send(dateString);
 });
 
