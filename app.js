@@ -25,8 +25,7 @@ app.use('/users', users);
 
 app.get('/:date', function(request, response) {
   var dateString = request.param('date');
-  var unixObj = Date.parse(dateString).getTime();
-  response.send(unixObj);
+  response.send(dateString);
 });
 
 
