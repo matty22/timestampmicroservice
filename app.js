@@ -23,9 +23,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
-app.get('/', function(request, response) {
-  console.log(request);
-  response.send('id: ' + request.params);
+app.get('/:date', function(request, response) {
+  var dateString = request.param('date');
+  console.log(dateString);
+  response.send(dateString);
 });
 
 
