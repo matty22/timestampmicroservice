@@ -24,6 +24,7 @@ app.use('/', index);
 app.use('/users', users);
 
 app.get('/', function(request, response) {
+  console.log(request);
   response.send('id: ' + request.params);
 });
 
