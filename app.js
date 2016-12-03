@@ -11,7 +11,7 @@ var users = require('./routes/users');
 var app = express();
 
 app.get('/', function(request, response) {
-  response.send('id: ' + request.query.id);
+  response.send('id: ' + request);
 });
 
 // uncomment after placing your favicon in /public
