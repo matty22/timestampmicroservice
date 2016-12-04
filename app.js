@@ -26,7 +26,7 @@ app.use('/', index);
 
 app.get('/:date', function(request, response) {
   var dateString = request.param('date');
-  var unixDate = moment(dateString).format("MM-DD-YYYY");
+  var unixDate = moment(dateString).format("MMMM-DD-YYYY");
   // var timeObj = {
   //   readable: "",
   //   unixtime: ""
