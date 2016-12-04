@@ -30,8 +30,8 @@ app.get('/:date', function(request, response) {
     readable: "",
     unixtime: ""
   }
-  timeObj.readable = dateString;
-  timeObj.unixtime = moment(dateString).unix();
+  timeObj.readable = moment(dateString, "MM-DD-YYYY");
+  timeObj.unixtime = moment(dateString, "x");
   response.send(timeObj);
 });
 
