@@ -22,17 +22,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+//app.use('/users', users);
 
 app.get('/:date', function(request, response) {
   var dateString = request.param('date');
-  var timeObj = {
-    readable: "",
-    unixtime: ""
-  }
-  timeObj.readable = moment(dateString);
-  timeObj.unixtime = moment.unix(dateString);
-  response.send(timeObj);
+  // var timeObj = {
+  //   readable: "",
+  //   unixtime: ""
+  // }
+  // timeObj.readable = moment(dateString);
+  // timeObj.unixtime = moment.unix(dateString);
+  response.send(moment(dateString));
 });
 
 
