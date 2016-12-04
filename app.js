@@ -26,13 +26,14 @@ app.use('/', index);
 
 app.get('/:date', function(request, response) {
   var dateString = request.param('date');
-  var timeObj = {
-    readable: "",
-    unixtime: ""
-  }
-  timeObj.readable = moment(dateString);
-  timeObj.unixtime = moment(Number(dateString));
-  response.send(timeObj);
+  var unixDate = moment(dateString).valueOf();
+  // var timeObj = {
+  //   readable: "",
+  //   unixtime: ""
+  // }
+  // timeObj.readable = moment(dateString);
+  // timeObj.unixtime = moment(Number(dateString));
+  response.send(unixDate);
 });
 
 
