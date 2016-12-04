@@ -26,7 +26,7 @@ app.use('/users', users);
 
 app.get('/:date', function(request, response) {
   var dateString = request.param('date');
-  var readable = moment.(dateString);
+  var readable = moment(dateString);
   var unixtime = moment.unix(dateString);
   response.send(readable);
 });
