@@ -32,7 +32,7 @@ app.get('/:date', function(request, response) {
   // }
   // timeObj.readable = moment(dateString);
   // timeObj.unixtime = moment.unix(dateString);
-  response.send(typeof dateString);
+  response.send(dateString);
 });
 
 
