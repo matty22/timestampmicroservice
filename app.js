@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var datejs = require('datejs');
+var moment = require('moment');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -26,9 +26,9 @@ app.use('/users', users);
 
 app.get('/:date', function(request, response) {
   var dateString = request.param('date');
-  var unixtime = Date(dateString);
-  var stringTime = Date.parse(dateString).toString('MMMM dS, yyyy');
-  response.send(unixtime, stringTime);
+  var readable = moment.(dateString);
+  var unixtime = moment.unix(dateString);
+  response.send(readable);
 });
 
 
