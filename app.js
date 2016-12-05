@@ -1,39 +1,37 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 var moment = require('moment');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
 
 
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', index);
-//app.use('/users', users);
 
 app.get('/:date', function(request, response) {
   var dateString = request.param('date');
-  var unixDate = moment(dateString).format("x");
-  // var timeObj = {
-  //   readable: "",
-  //   unixtime: ""
-  // }
-  // timeObj.readable = moment(dateString).format("MMMM DD, YYYY");
-  // timeObj.unixtime = moment(Number(dateString));
-  response.send(unixDate);
+  var timeObj = {
+    readable: "",
+    unixtime: ""
+  }
+
+  if (moment(dateString).isValid() || moment.unix(dateString).isValid()) {
+    if (Number(dateString)) {
+      timeObj.unixtime = dateString;
+      timeObj.readable = moment.unix(dateString).format("MMMM DD, YYYY");
+      response.send(timeObj);
+    } else if (!Number(dateString)) {
+      timeObj.readable = dateString;
+      timeObj.unixtime = moment(dateString).format("x") / 1000;
+      response.send(timeObj);
+   } 
+  } else {
+    timeObj.readable = null;
+    timeObj.unixtime = null;
+    response.send(timeObj);
+  }
+  
 });
 
 
